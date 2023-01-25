@@ -21,11 +21,14 @@ export function slider() {
                 for (let elem of li) {
                     elem.removeAttribute('style');
                 }
-            } else {
-                setBaseStylies();
-                ul.addEventListener('pointerdown', elemDown);
+
+                return;
             }
         }
+
+        ul.ondragstart = () => false;
+        setBaseStylies();
+        ul.addEventListener('pointerdown', elemDown);
     }
     allowedDevice();
     window.addEventListener('resize', allowedDevice);
