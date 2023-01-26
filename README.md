@@ -6,16 +6,14 @@
   // U can just copy my func to your js fail
   // function slider() {} Just copy it all without IMPORT from slider.js
 
-  // The most cool option, you cacn import slider to your script.js
+  // The most cool option, you can import slider to your script.js
   import {slider} from 'any-folder/slider.js';
 ```
 
 ### Second: When included js, you need to create class for elements
 ```html
-   <!-- Just give class slider your wrapper.
-    IMPORTANT: wrapper must have! Dont use slider on UL -->
+   <!-- Use class slider on your wrapper. Dont use it on Ul list.-->
     <div class="slider"> 
-      <!-- Just your random list -->
       <ul>
         <li>Aboba</li>
       </ul>
@@ -26,8 +24,7 @@
 
 ```html
    <!-- slider--mob ONLY for mobile. slider--table ONLY for mobile and table -->
-    <div class="slider slider--mob"> 
-      <!-- Just your random list -->
+    <div class="slider slider--mob">
       <ul>
         <li>Aboba</li>
       </ul>
@@ -37,12 +34,11 @@
 ### Also you can give class to your buttons for slider
 ```html
     <div class="slider"> 
-      <!-- Just your random list -->
       <ul>
         <li>Aboba</li>
       </ul>
     </div>
-    <!-- Just dont forget to make important class slider__buttons on wrapper! 
+    <!-- Create slider__buttons class on wrapper. 
     And you need to create slider--prev and slider--next on button -->
     <div class="slider__buttons">
       <button class="slider--prev">Prev</button>
@@ -52,8 +48,7 @@
 
 ### You can create breadscrumbs:
 ```html
-    <div class="slider"> 
-      <!-- Just your random list -->
+    <div class="slider">
       <ul>
         <li>Aboba</li>
       </ul>
@@ -63,4 +58,4 @@
 ```
 
 
-### Gl hf :)
+### You can change a bit stylies of slider. But be careful. Gl hf :)

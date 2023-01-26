@@ -39,8 +39,8 @@ export function slider() {
             if (sliderMob && window.innerWidth >= 768 || sliderTable && window.innerWidth >= 1200) {
                 slider.removeAttribute('style');
                 ul.removeAttribute('style');
-                toggles.style.display = 'none';
-                sliderButtons.style.display = 'none';
+                toggles ? toggles.style.display = 'none' : false;
+                sliderButtons ? sliderButtons.style.display = 'none' : false;
 
                 for (let elem of li) {
                     elem.removeAttribute('style');
@@ -49,8 +49,8 @@ export function slider() {
             }
         } 
         ul.ondragstart = () => false;
-        toggles.removeAttribute('style');
-        sliderButtons.removeAttribute('style');
+        toggles ? toggles.removeAttribute('style') : false;
+        sliderButtons ? sliderButtons.removeAttribute('style') : false;
         setBaseStylies();
         setToggle(0);
         toggles ? toggles.addEventListener('click', selectElem) : false;
