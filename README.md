@@ -21,6 +21,7 @@
 ```
 
 ### If you wanna use it only for mobile or table use next: 
+### slider--mob for slider. toggles--mob for scrumbs, buttons--mob for buttons
 
 ```html
    <!-- slider--mob ONLY for mobile. slider--table ONLY for mobile and table -->
@@ -29,7 +30,13 @@
         <li>Aboba</li>
       </ul>
     </div>
+    <div class="slider__buttons buttons--mob">
+      <button class="slider--prev" aria-label="Назад"></button>
+      <button class="slider--next" aria-label="Вперед"></button>
+    </div>
+    <ul class="slider__toggles toggles--mob" data-quantity="3"></ul>
 ```
+
 
 ### Also you can give class to your buttons for slider
 ```html
