@@ -1,11 +1,12 @@
 export function slider() {
     for (let i = 0; i < document.querySelectorAll('.slider').length; i++) {
         const slider = document.querySelectorAll('.slider')[i];
+        const sliderWrapper = slider.querySelector('.slider__wrapper');
         const ul = slider.getElementsByTagName('ul')[0];
         const li = ul.getElementsByTagName('li');
-        const toggles = document.querySelectorAll('.slider__toggles')[i];
-        const sliderButtons = document.querySelectorAll('.slider__buttons')[i];
-        
+        const toggles = slider.querySelector('.slider__toggles');
+        const sliderButtons = slider.querySelector('.slider__buttons');
+
         let width = slider.parentElement.offsetWidth - parseFloat(window.getComputedStyle(slider.parentElement).paddingLeft) - parseFloat(window.getComputedStyle(slider.parentElement).paddingRight);
         let targetLeft = 0;
         let direction = 'left';
@@ -38,12 +39,20 @@ export function slider() {
     
             if (sliderMob || sliderTable) {
                 if (sliderMob && window.innerWidth >= 768 || sliderTable && window.innerWidth >= 1200) {
-                    slider.removeAttribute('style');
+                    sliderWrapper.removeAttribute('style');
                     ul.removeAttribute('style');
-                    window.innerWidth >= 768 && toggles.classList.contains('toggles--mob') ||
-                    window.innerWidth >= 1200 && toggles.classList.contains('toggles--table') ? toggles.style.display = 'none' : false;
-                    window.innerWidth >= 768 && sliderButtons.classList.contains('buttons--mob') ||
-                    window.innerWidth >= 1200 && sliderButtons.classList.contains('buttons--table') ? sliderButtons.style.display = 'none' : false;
+                    ul.removeEventListener('pointerdown', elemDown);
+
+                    if (!!toggles) {
+                        window.innerWidth >= 768 && toggles.classList.contains('toggles--mob') ||
+                        window.innerWidth >= 1200 && toggles.classList.contains('toggles--table') ? toggles.style.display = 'none' : false;
+                    }
+
+                    if (!!sliderButtons) {
+                        window.innerWidth >= 768 && sliderButtons.classList.contains('buttons--mob') ||
+                        window.innerWidth >= 1200 && sliderButtons.classList.contains('buttons--table') ? sliderButtons.style.display = 'none' : false;
+                    }
+                    
                     
                     for (let elem of li) {
                         elem.removeAttribute('style');
@@ -51,12 +60,17 @@ export function slider() {
                     return;
                 }
             } 
+
             ul.ondragstart = () => false;
-            toggles ? toggles.removeAttribute('style') : false;
-            sliderButtons ? sliderButtons.removeAttribute('style') : false;
+            if (!!toggles) {
+                toggles.removeAttribute('style');
+                setToggle(0);
+                toggles.addEventListener('click', selectElem);
+            }
+            if (!!sliderButtons) {
+                sliderButtons.removeAttribute('style')
+            }
             setBaseStylies();
-            setToggle(0);
-            toggles ? toggles.addEventListener('click', selectElem) : false;
             ul.addEventListener('pointerdown', elemDown); // Добавить ключевое событие
         }
         allowedDevice();
@@ -65,13 +79,12 @@ export function slider() {
         // Переключать по кнопке слайды
         function btnSwapSlider() {
             if (!sliderButtons) return;
-    
+            
             sliderButtons.addEventListener('click', (event) => {
-                const target = event.target.closest('button');
                 let count = 0;
-    
+                const target = event.target.closest('button');
+                
                 if (!target) return;
-    
                 targetLeft = parseFloat(window.getComputedStyle(ul).left);
     
                 for (let elem of toggles.children) {
@@ -82,7 +95,7 @@ export function slider() {
                         break;
                     }
                 }
-    
+                
                 if (target.classList.contains('slider--prev')) {
                     direction = 'right';
                     ul.style.left = `${targetLeft + width}px`;
@@ -97,6 +110,7 @@ export function slider() {
                 }
             });
         }
+
         btnSwapSlider();
     
         // Клик по переключателю. 
@@ -137,7 +151,7 @@ export function slider() {
         // Задать базовые сss свойства Ul
         // Задать базовые css свойства li
         function setBaseStylies() {
-            slider.style.cssText = `
+            sliderWrapper.style.cssText = `
                 width: ${width}px;
                 overflow: hidden;
             `;

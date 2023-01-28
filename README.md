@@ -7,10 +7,10 @@
 ```
 
 ### Second: create the structure of html.
-### 1. Need to create div .slider
-### 2. Create class slider__wrapper
-### 3. Any your ul list into slider__wrapper
-### 4. Ready
+1. Need to create div .slider
+2. Create class slider__wrapper
+3. Any your ul list into slider__wrapper
+4. Ready
 ```html
    <!-- Use class slider on your wrapper. Dont use it on Ul list.-->
     <div class="slider"> 
@@ -23,7 +23,7 @@
 ```
 
 ### If you wanna use it only for mobile or table, use next: 
-### slider--mob for slider. toggles--mob for scrumbs, buttons--mob for buttons
+1. slider--mob for slider. toggles--mob for scrumbs, buttons--mob for buttons
 
 ```html
    <!-- slider--mob ONLY for mobile. slider--table ONLY for mobile and table -->
@@ -43,9 +43,9 @@
 
 
 ### If you have any buttons for scrolling slider, you can include it with by slider__buttons
-### Just create slider__buttons div into your slider div. 
-### IMPORTANT: You need to put slider__button into slider, not anything else.
-### Also you need to create slider--prev and slider--next. 
+1. Just create slider__buttons div into your slider div. 
+2. IMPORTANT: You need to put slider__button into slider, not anything else.
+3. Also you need to create slider--prev and slider--next. 
 ```html
     <div class="slider"> 
       <div class="slider__wrapper">
@@ -61,7 +61,7 @@
 ```
 
 ### You can create breadscrumbs:
-### All the same like buttons, but you can set data-quantity to set how many you need breads
+1. All the same like buttons, but you can set data-quantity to set how many you need breads
 ```html
     <div class="slider"> 
       <div class="slider__wrapper">
